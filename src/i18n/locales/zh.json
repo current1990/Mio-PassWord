@@ -1,0 +1,20 @@
+{
+  "title": "数字密码生成器",
+  "digits": {
+    "label": "位数",
+    "description": "将随机分组显示，每组包含干扰数字",
+    "placeholder": "6-32位"
+  },
+  "generateButton": "生成随机数",
+  "memoryTraining": {
+    "title": "记忆训练",
+    "clickToStart": "点击开始...",
+    "clickToShowNext": "点击显示下一组...",
+    "completed": "已显示完所有数字",
+    "showAgain": "再次显示",
+    "setComplete": "设置完成",
+    "close": "关闭",
+    "progress": "已显示: {current} / {total} 组",
+    "colorGuide": "紫色为需要记忆的数字，灰色为干扰数字"
+  }
+}

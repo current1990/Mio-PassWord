@@ -1,0 +1,20 @@
+{
+  "title": "Number Password Generator",
+  "digits": {
+    "label": "Digits",
+    "description": "Will be displayed in groups with interference digits",
+    "placeholder": "6-32 digits"
+  },
+  "generateButton": "Generate Random Number",
+  "memoryTraining": {
+    "title": "Memory Training",
+    "clickToStart": "Click to start...",
+    "clickToShowNext": "Click to show next group...",
+    "completed": "All numbers have been shown",
+    "showAgain": "Show Again",
+    "setComplete": "Set Complete",
+    "close": "Close",
+    "progress": "Shown: {current} / {total} groups",
+    "colorGuide": "Purple: numbers to set, Gray: interference digits"
+  }
+}

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from '@/i18n/useTranslation';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 interface DigitDisplay {
   value: string;
@@ -13,6 +15,7 @@ interface SegmentDisplay {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   const [randomNumber, setRandomNumber] = useState<string | null>(null);
   const [displayedParts, setDisplayedParts] = useState<SegmentDisplay[]>([]);
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
@@ -246,15 +249,17 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-purple-500 to-pink-500">
+      <LanguageSwitcher />
+      
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md space-y-8">
         <h1 className="text-3xl font-bold text-center text-gray-800 font-sans tracking-tight">
-          数字密码生成器
+          {t('title')}
         </h1>
         
         <div className="space-y-6">
           <div>
             <label htmlFor="digits" className="block text-base font-medium text-gray-700 font-sans mb-2">
-              位数
+              {t('digits').label}
             </label>
             <div className="relative">
               <input
@@ -284,10 +289,10 @@ export default function Home() {
                   }
                 }}
                 className="block w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 font-sans text-lg transition-colors outline-none"
-                placeholder="6-32位"
+                placeholder={t('digits').placeholder}
               />
               <div className="mt-2 text-sm text-gray-500 font-sans">
-                将随机分组显示，每组包含干扰数字
+                {t('digits').description}
               </div>
             </div>
           </div>
@@ -296,7 +301,7 @@ export default function Home() {
             onClick={generateNumber}
             className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white font-sans text-lg font-medium rounded-lg shadow-md transition duration-200 tracking-wide"
           >
-            生成随机数
+            {t('generateButton')}
           </button>
         </div>
       </div>
@@ -308,7 +313,10 @@ export default function Home() {
             className="bg-white rounded-lg p-6 max-w-md w-full transform transition-all shadow-xl space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-xl font-semibold text-gray-800 font-sans tracking-tight mb-4">记忆训练</h2>
+            <h2 className="text-xl font-semibold text-gray-800 font-sans tracking-tight mb-4">
+              {t('memoryTraining').title}
+            </h2>
+            
             <div 
               onClick={!showAll ? showNextPart : undefined}
               className={`bg-gray-50 p-6 rounded-lg ${!showAll ? 'cursor-pointer hover:bg-gray-100' : ''} transition-colors`}
@@ -332,12 +340,14 @@ export default function Home() {
                 ))}
                 {currentPartIndex < segments.length && !showAll && (
                   <div className="text-gray-400 mt-6 text-base font-sans">
-                    {currentPartIndex === 0 ? '点击开始...' : '点击显示下一组...'}
+                    {currentPartIndex === 0 ? t('memoryTraining').clickToStart : t('memoryTraining').clickToShowNext}
                   </div>
                 )}
                 {showingCompleted && (
                   <div className="mt-6 space-y-4">
-                    <div className="text-gray-400 text-base font-sans">已显示完所有数字</div>
+                    <div className="text-gray-400 text-base font-sans">
+                      {t('memoryTraining').completed}
+                    </div>
                     <div className="flex gap-3 justify-center">
                       <button
                         onClick={(e) => {
@@ -346,7 +356,7 @@ export default function Home() {
                         }}
                         className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-sans text-base font-medium tracking-wide"
                       >
-                        再次显示
+                        {t('memoryTraining').showAgain}
                       </button>
                       <button
                         onClick={(e) => {
@@ -355,23 +365,27 @@ export default function Home() {
                         }}
                         className="px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-sans text-base font-medium tracking-wide"
                       >
-                        设置完成
+                        {t('memoryTraining').setComplete}
                       </button>
                     </div>
                   </div>
                 )}
               </div>
             </div>
+            
             <div className="text-sm text-gray-500 space-y-2 font-sans">
-              <p>已显示: {currentPartIndex} / {segments.length} 组</p>
-              <p>紫色为需要记忆的数字，灰色为干扰数字</p>
+              <p>
+                {t('memoryTraining').progress.replace('{current}', String(currentPartIndex)).replace('{total}', String(segments.length))}
+              </p>
+              <p>{t('memoryTraining').colorGuide}</p>
             </div>
+            
             <div className="flex space-x-3">
               <button
                 onClick={() => setShowModal(false)}
                 className="flex-1 py-2.5 px-4 bg-gray-200 hover:bg-gray-300 text-gray-800 font-sans font-medium rounded-lg transition duration-200"
               >
-                关闭
+                {t('memoryTraining').close}
               </button>
             </div>
           </div>
