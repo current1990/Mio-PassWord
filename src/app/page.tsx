@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '@/i18n/useTranslation';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { HelpButton } from '@/components/HelpButton';
 
 interface DigitDisplay {
   value: string;
@@ -250,6 +251,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-purple-500 to-pink-500">
       <LanguageSwitcher />
+      <HelpButton />
       
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md space-y-8">
         <h1 className="text-3xl font-bold text-center text-gray-800 font-sans tracking-tight">

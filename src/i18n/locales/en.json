@@ -2,19 +2,41 @@
   "title": "Number Password Generator",
   "digits": {
     "label": "Digits",
-    "description": "Will be displayed in groups with interference digits",
+    "description": "Will be displayed in random groups with interference digits",
     "placeholder": "6-32 digits"
   },
   "generateButton": "Generate Random Number",
   "memoryTraining": {
-    "title": "Memory Training",
+    "title": "Password Generation",
     "clickToStart": "Click to start...",
     "clickToShowNext": "Click to show next group...",
-    "completed": "All numbers have been shown",
+    "completed": "All digits have been shown",
     "showAgain": "Show Again",
-    "setComplete": "Set Complete",
+    "setComplete": "Setup Complete",
     "close": "Close",
     "progress": "Shown: {current} / {total} groups",
-    "colorGuide": "Purple: numbers to set, Gray: interference digits"
+    "colorGuide": "Purple digits are the actual password digits, gray ones are interference digits"
+  },
+  "help": {
+    "button": "Usage Help",
+    "title": "How to Use",
+    "steps": [
+      "Enter your desired number of digits (6-32 digits)",
+      "Click \"Generate Random Number\" button to generate a new random number",
+      "The generated random number will be split into groups for display, and each group will contain interference digits to maximize short-term memory interference",
+      "Each group contains actual password digits (in purple) and interference digits (in gray)",
+      "Click to display each group in sequence",
+      "After all groups are shown, you can choose to view again or complete the setup",
+      "When choosing to view again, the password remains unchanged but interference digits will be re-randomized, which can be used for password verification or correctness check",
+      "Please make sure the password is set correctly before locking~"
+    ],
+    "tipsTitle": "Reminder",
+    "tips": [
+      "Only focus on the purple digits - these are the actual password",
+      "Try to empty your mind and mechanically follow the digits to set the password, you know what I mean",
+      "After setup is complete, the entire password will be displayed, take a photo with your camera to use as password for MIO or Chaster",
+      "Happy locking~"
+    ],
+    "close": "Close Help"
   }
 }
