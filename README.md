@@ -9,6 +9,10 @@
 - 简洁现代的UI界面
 - 可自定义最小值和最大值
 
+## 部署状态
+
+[![Deployed on Vercel](https://vercel.com/button)](https://vercel.com)
+
 ## 本地开发
 
 1. 安装依赖：
