@@ -31,6 +31,14 @@ export default function Home() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        if (randomNumber) {
+          console.log('Password closed by clicking outside:', {
+            password: randomNumber,
+            displayedSegments: displayedParts.length,
+            totalSegments: segments.length,
+            timestamp: new Date().toISOString(),
+          });
+        }
         setShowModal(false);
         setCurrentPartIndex(0);
         setDisplayedParts([]);
@@ -41,7 +49,7 @@ export default function Home() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [randomNumber, displayedParts.length, segments.length]);
 
   useEffect(() => {
     console.log('Current state:', {
@@ -384,7 +392,17 @@ export default function Home() {
             
             <div className="flex space-x-3">
               <button
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  if (randomNumber) {
+                    console.log('Password closed by button click:', {
+                      password: randomNumber,
+                      displayedSegments: displayedParts.length,
+                      totalSegments: segments.length,
+                      timestamp: new Date().toISOString(),
+                    });
+                  }
+                  setShowModal(false);
+                }}
                 className="flex-1 py-2.5 px-4 bg-gray-200 hover:bg-gray-300 text-gray-800 font-sans font-medium rounded-lg transition duration-200"
               >
                 {t('memoryTraining').close}
